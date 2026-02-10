@@ -1,4 +1,6 @@
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 df = pd.read_csv("data/customer_churn.csv")
 
@@ -19,3 +21,20 @@ for col in df.select_dtypes(include="object").columns:
 
 print("Missing values after cleaning:")
 print(df.isnull().sum())
+
+print("Churn counts:")
+print(df["Churn"].value_counts())
+
+print("\nChurn percentages:")
+print(df["Churn"].value_counts(normalize=True))
+
+sns.countplot(x="Churn", data=df)
+plt.title("Churn Distribution")
+plt.show()
+
+print("\nStatistical summary:")
+print(df.describe())
+
+sns.histplot(df["MonthlyCharges"], kde=True)
+plt.title("Monthly Charges Distribution")
+plt.show()
