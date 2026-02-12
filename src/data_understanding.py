@@ -38,3 +38,17 @@ print(df.describe())
 sns.histplot(df["MonthlyCharges"], kde=True)
 plt.title("Monthly Charges Distribution")
 plt.show()
+
+sns.countplot(x="Contract", hue="Churn", data=df)
+plt.title("Contract Type vs Churn")
+plt.xticks(rotation=45)
+plt.show()
+
+sns.countplot(x="InternetService", hue="Churn", data=df)
+plt.title("Internet Service vs Churn")
+plt.show()
+
+sns.boxplot(x="Churn", y="MonthlyCharges", data=df)
+plt.title("Monthly Charges vs Churn")
+plt.show()
+
